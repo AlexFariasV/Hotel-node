@@ -37,4 +37,8 @@ router.get("/adm-cliente-del", function (req, res) {
     res.render("pages/adm/template-adm",{pagina:"cliente/delete"});
 });
 
+
+
+
+
 module.exports = router;
