@@ -4,7 +4,7 @@ const port = 3000;
 
 app.use(express.static("app/public"));
 
-const env = require("dotenv").config();
+/* const env = require("dotenv").config(); */
 
 app.set("view engine", "ejs");
 app.set("views", "./app/views");

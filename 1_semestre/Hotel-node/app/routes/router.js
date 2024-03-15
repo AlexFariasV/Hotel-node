@@ -1,5 +1,7 @@
 var express = require("express");
 var router = express.Router();
+var TarefasControl = require("../controllers/control")
+
 
 router.get("/", function (req, res) {
     res.render("pages/template-home", {pagina:"home", logado:null});
@@ -10,6 +12,10 @@ router.get("/login", function (req, res) {
 router.get("/cadastro", function (req, res) {
     res.render("pages/template-home", {pagina:"cadastro", logado:null});
 });
+router.post("/cadastro", async function (req, res) {
+    TarefasControl.Criarussuario(req,res)
+});
+
 router.get("/perfil", function (req, res) {
     res.render("pages/template-home", {pagina:"perfil", logado:"logado"});
 });
@@ -36,11 +42,6 @@ router.get("/adm-cliente-list", function (req, res) {
 router.get("/adm-cliente-del", function (req, res) {
     res.render("pages/adm/template-adm",{pagina:"cliente/delete"});
 });
-
-router.get("/cadastro", async function(){
-
-});
-
 
 
 
