@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 3001; // Altere a porta para 3000 ou outra porta disponível
 
 app.use(express.static("app/public"));
 
@@ -16,5 +16,5 @@ var rotas = require("./app/routes/router");
 app.use("/", rotas);
 
 app.listen(port, () => {
-  console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
+  console.log(`Servidor ouvindo na porta ${port} \nhttp://localhost:${port}`);
 });

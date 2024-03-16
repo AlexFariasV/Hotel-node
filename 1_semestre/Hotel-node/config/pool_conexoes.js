@@ -14,15 +14,13 @@ const mysql = require('mysql2')
  const pool = mysql.createPool({
     host: "localhost", 
     user: "root", 
-    password: "@ITB123456",
+    password: "Alexfarias123@V",
     database: "autenticacao",
     port: 3306,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
 });
- 
-
 
 pool.getConnection((err, conn) => {
     if(err) 
