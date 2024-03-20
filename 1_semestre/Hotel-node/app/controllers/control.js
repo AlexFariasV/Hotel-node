@@ -29,6 +29,8 @@ const TarefasControl = {
             .withMessage("Email invalido "),
         if(req.body.senha){
             
+        }else{
+            (err)
         }
 
 
