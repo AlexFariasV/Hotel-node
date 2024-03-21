@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 var rotas = require("./app/routes/router");
 app.use("/", rotas);
 
+
 app.listen(port, () => {
   console.log(`Servidor ouvindo na porta ${port} \nhttp://localhost:${port}`);
 });
