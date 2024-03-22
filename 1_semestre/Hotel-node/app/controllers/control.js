@@ -36,6 +36,16 @@ const TarefasControl = {
             .isLength({ min: 8, max: 30 })
             .withMessage("senha invalido, deve conter pelo menos 8 digitos "),
 
+        body("c-senha")
+            .notEmpty()
+            .withMessage('Campo vazio.')
+            .custom((value, { req }) => {
+                const senha = req.body.senha
+                if (value != senha) {
+                    throw new Error('Senha diferentes.')
+                }
+                return true;
+            })
     ],
 
 
