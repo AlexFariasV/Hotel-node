@@ -2,13 +2,14 @@
 
 Projeto de treinamento de hotel com sistemas de login e cadastro & página adm.
 
-### Funcionalidade Principal:
+### Funcionalidade Principal
 
 - sistema de login
 -  sistema de cadastro
 -  página Adm podendo excluir contas, editar & criar
   
 ## Tecnologias Utilizadas
+
 - Frontend: HTML, CSS e javascript & bootstrap
 - back-end: node.js
 
