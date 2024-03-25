@@ -9,7 +9,7 @@ Projeto de treinamento de hotel com sistemas de login e cadastro & página adm.
 -  página Adm podendo excluir contas, editar & criar
 
 
-## Tecnologias Utilizadas
+### Tecnologias Utilizadas
 
 - Frontend: HTML, CSS e javascript & bootstrap
 - back-end: node.js
