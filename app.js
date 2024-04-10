@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000; // Altere a porta para 3000 ou outra porta disponível
 
+
 const dotenv = require('dotenv');
 dotenv.config();
 

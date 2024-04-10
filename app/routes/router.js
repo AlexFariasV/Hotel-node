@@ -10,12 +10,6 @@ router.get("/", function (req, res) {
 router.get("/login", function (req, res) {
     res.render("pages/template-home", {pagina:"login", logado:null});
 });
-
-
-
-/* ======================================================================================= */
-
-
 router.get("/cadastro", function (req, res) {
     res.render("pages/template-home", {pagina:"cadastro", logado:null, retorno: null, listaErros: null, dados: null
     
@@ -24,11 +18,6 @@ router.get("/cadastro", function (req, res) {
 router.post("/cadastro", TarefasControl.regrasValidacao,  async function (req, res) {
     TarefasControl.Criarussuario(req,res)
 });
-
-/* ======================================================================================= */
-
-
-
 
 router.get("/perfil", function (req, res) {
     res.render("pages/template-home", {pagina:"perfil", logado:"logado"});
@@ -56,7 +45,16 @@ router.get("/adm-cliente-list", function (req, res) {
 router.get("/adm-cliente-del", function (req, res) {
     res.render("pages/adm/template-adm",{pagina:"cliente/delete"});
 });
+/* ====================================NovasRotas=================================================== */
+router.get("/quartos", function (req, res) {
+    tipoQuartosController.listarTiposQuartos(req, res);
+});
+
+router.get("/quartos-estatico", function (req, res) {
+    res.render("pages/template-home", {pagina:"quartos-estatico", logado:null});
+});
 
 
+/* ======================================================================================= */
 
 module.exports = router;
