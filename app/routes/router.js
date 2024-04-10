@@ -1,12 +1,23 @@
 var express = require("express");
 var router = express.Router();
 var TarefasControl = require("../controllers/control")
+const tipoQuartosController = require("../controllers/tipoQuartosController");
 const { body, validationResult } = require("express-validator");
 
 
 router.get("/", function (req, res) {
     res.render("pages/template-home", {pagina:"home", logado:null});
 });
+/* ====================================NovasRotas=================================================== */
+router.get("/quartos", function (req, res) {
+    tipoQuartosController.listarTiposQuartos(req, res);
+});
+
+router.get("/quartos-estatico", function (req, res) {
+    res.render("pages/template-home", {pagina:"quartos-estatico", logado:null});
+});
+
+/* ======================================================================================= */
 router.get("/login", function (req, res) {
     res.render("pages/template-home", {pagina:"login", logado:null});
 });
@@ -45,16 +56,5 @@ router.get("/adm-cliente-list", function (req, res) {
 router.get("/adm-cliente-del", function (req, res) {
     res.render("pages/adm/template-adm",{pagina:"cliente/delete"});
 });
-/* ====================================NovasRotas=================================================== */
-router.get("/quartos", function (req, res) {
-    tipoQuartosController.listarTiposQuartos(req, res);
-});
-
-router.get("/quartos-estatico", function (req, res) {
-    res.render("pages/template-home", {pagina:"quartos-estatico", logado:null});
-});
-
-
-/* ======================================================================================= */
 
 module.exports = router;
