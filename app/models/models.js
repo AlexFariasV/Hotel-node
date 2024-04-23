@@ -14,8 +14,8 @@ const tarefasModel = {
     },
     findByEmail: async (data) => {
         try {
-            const [linhas] = await pool.query('SELECT * FROM usuario WHERE `email_usuario` = ? ',  [ data ])
-            console.log(linhas)
+            const [linhas] = await pool.query('SELECT * FROM usuario WHERE email_usuario = ? ',  [ data ])
+            
             return linhas;
         } catch (error) {
             return error;

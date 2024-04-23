@@ -31,12 +31,10 @@ const TarefasControl = {
         body("email")
             .isEmail()
             .withMessage("Email invalido ")
-            .custom(async (value, { req }) => {
-                console.log('valor: '+value)
+            .custom(async (value) => {
                 const email = await tarefasModel.findByEmail(value)
-                console.log('email: '+email)
-                if (email) {
-                    throw new Error('Email já utilizado.')
+                if (email.length > 0) {
+                    throw new Error('Email já utilizado.');
                 }
                 return true;
             
