@@ -30,7 +30,17 @@ const TarefasControl = {
 
         body("email")
             .isEmail()
-            .withMessage("Email invalido "),
+            .withMessage("Email invalido ")
+            .custom(async (value, { req }) => {
+                console.log('valor: '+value)
+                const email = await tarefasModel.findByEmail(value)
+                console.log('email: '+email)
+                if (email) {
+                    throw new Error('Email já utilizado.')
+                }
+                return true;
+            
+            }), 
 
         body("senha")
             .isLength({ min: 8, max: 30 })
