@@ -2,6 +2,8 @@
 
 Projeto de treinamento de hotel com sistemas de login e cadastro & página adm.
 
+- Contendo apenas para tela de celulares
+
 ### Funcionalidade Principal
 
 - sistema de login
