@@ -20,7 +20,9 @@ const tarefasModel = {
         } catch (error) {
             return error;
         }
-    }
+    },
+
+
   
 };
 

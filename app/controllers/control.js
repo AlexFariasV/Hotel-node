@@ -55,7 +55,8 @@ const TarefasControl = {
                 return true;
             })
     ],
-
+    
+   
 
 
 
