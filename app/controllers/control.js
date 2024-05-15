@@ -1,6 +1,10 @@
 const tarefasModel = require("../models/models");
 const moment = require("moment");
 const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+var salt = bcrypt.genSaltSync(12);
+
+
 const TarefasControl = {
 
     Criarussuario: async (req, res) => {
@@ -55,11 +59,9 @@ const TarefasControl = {
                 return true;
             })
     ],
-    
+
    
-
-
-
+   
 }
 
 
