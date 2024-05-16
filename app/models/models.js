@@ -25,8 +25,6 @@ const tarefasModel = {
         }
     },
 
-
-  
 };
 
 module.exports = tarefasModel;
