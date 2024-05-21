@@ -1,8 +1,39 @@
 const tarefasModel = require("../models/models");
 const moment = require("moment");
 const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 const TarefasControl = {
+
+    logar: (req, res) => {
+        const erros = validationResult(req);
+        if (!erros.isEmpty()) {
+            return res.render("pages/template-home", {pagina:"login", logado:null, dados: null,listaErros: null})
+        }
+        if (req.session.autenticado != null) {
+            res.redirect("/");
+        } else {
+            res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null,})
+        }
+
+        req.flash('success', 'Usuário logado')
+
+        res.redirect("/cadastro"); //alterar 
+    },
+
+    regrasValidacaoFormLogin: [
+        body("email")
+        .isEmail()
+        .withMessage("Email invalido "),
+        body("senha")
+        .isLength({ min: 8, max: 30 })
+        .withMessage("Senha inválida, deve conter pelo menos 8 caracteres")
+        .bail()
+        .matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/)
+        .withMessage("Senha inválida, deve conter pelo menos 1 letra, 1 número e 1 caractere especial"),
+          
+    ],
+
 
     Criarussuario: async (req, res) => {
         const errors = validationResult(req);

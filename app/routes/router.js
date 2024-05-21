@@ -19,8 +19,13 @@ router.get("/quartos-estatico", function (req, res) {
 
 /* ======================================================================================= */
 router.get("/login", function (req, res) {
-    res.render("pages/template-home", {pagina:"login", logado:null});
+    res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null});
 });
+router.post('/login', TarefasControl.regrasValidacaoFormLogin, function (req, res) {
+    TarefasControl.logar(req, res);
+
+  })
+
 router.get("/cadastro", function (req, res) {
     res.render("pages/template-home", {pagina:"cadastro", logado:null, retorno: null, listaErros: null, dados: null
     

@@ -1,14 +1,48 @@
 ﻿<!-- include header -->
 <%- include("../partial/header-home") %>
 
+<%
+var msgErro = {email:"", senha:""}
+var cssErro = {email:"", senha:""}
+var cssErroBorda = {email:"", senha:""}
+let valorCampos = {email:"", senha:""}
+if(dados && dados!=null){
+    valorCampos = dados
+}
+if (listaErros && listaErros.errors) {
+    listaErros.errors.forEach((itemErro) => {
+        if (itemErro.path == "email") {
+            msgErro.email = itemErro.msg;
+            cssErro.email = "erroForm";
+            cssErroBorda.email = "erroInput";
+            
+        } else if (itemErro.path == "senha") {
+            msgErro.senha = itemErro.msg;
+            cssErro.senha = "erroForm";
+            cssErroBorda.senha = "erroInput";
+           
+        }
+    });
+}
+%>
+
 <main>
     <div class="login-page">
         <div class="form-cadastro">
             <a href="/"><span id="fechar">&times;</span></a>
             <form action="login" method="post" class = "login-form">
                 <h2>Login</h2>
-                <input type="text" name="nome" id="nome" placeholder = "Nome de usuáio ou e-mail" >
-                <input type="password" name="senha" id="senha" placeholder = "Senha de usuário" >
+                
+                <input type="text" name="email" id="email" class="<%= cssErroBorda.email %>" placeholder="Seu e-mail" value="<%=valorCampos.email%>">
+                <span class="<%= cssErro.email %>">
+                    <%= msgErro.email %>
+                </span>
+
+                <input type="password" name="senha" id="senha" placeholder="Sua senha" class="input__field <%= cssErroBorda.senha %>"
+                placeholder="Senha" value="<%=valorCampos.senha%>">
+                  <span class="<%= cssErro.senha %>">
+                      <%= msgErro.senha %>
+                  </span>
                 <button type="submit">Entrar</button>
                 <p class="message">Não é cadastrado? <a href="/cadastro">Crie uma conta</a></p>
             </form>
