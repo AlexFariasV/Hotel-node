@@ -3,6 +3,7 @@ var router = express.Router();
 var TarefasControl = require("../controllers/control")
 const tipoQuartosController = require("../controllers/tipoQuartosController");
 const { body, validationResult } = require("express-validator");
+const {gravarUsuAutenticado} = require('../models/autenticador_middleware')
 
 
 router.get("/", function (req, res) {
@@ -21,10 +22,9 @@ router.get("/quartos-estatico", function (req, res) {
 router.get("/login", function (req, res) {
     res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null});
 });
-router.post('/login', TarefasControl.regrasValidacaoFormLogin, function (req, res) {
+router.post('/login', TarefasControl.regrasValidacaoFormLogin, gravarUsuAutenticado , function (req, res) {
     TarefasControl.logar(req, res);
-
-  })
+})
 
 router.get("/cadastro", function (req, res) {
     res.render("pages/template-home", {pagina:"cadastro", logado:null, retorno: null, listaErros: null, dados: null

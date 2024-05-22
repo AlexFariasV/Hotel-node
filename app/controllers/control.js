@@ -1,22 +1,26 @@
 const tarefasModel = require("../models/models");
 const moment = require("moment");
 const { body, validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
+const bycrypt = require("bcryptjs");
+const salt = bycrypt.genSaltSync(10)
 
 const TarefasControl = {
 
     logar: (req, res) => {
         const erros = validationResult(req);
+
         if (!erros.isEmpty()) {
-            return res.render("pages/template-home", {pagina:"login", logado:null, dados: null,listaErros: null})
+            
+            return res.render("pages/template-home", {pagina:"login", logado:null, dados: req.body, listaErros: erros })
         }
+
         if (req.session.autenticado != null) {
             res.redirect("/");
         } else {
             res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null,})
         }
 
-        req.flash('success', 'Usuário logado')
+        /* req.flash('success', 'Usuário logado') */
 
         res.redirect("/cadastro"); //alterar 
     },
@@ -48,7 +52,7 @@ const TarefasControl = {
           });
         }
         try {
-            const resultados = await tarefasModel.create(req.body)
+            const resultados = await tarefasModel.create({...req.body,senha: bycrypt.hashSync(req.body.senha)})
             res.render("pages/template-home", { pagina: "home", logado: null, });
 
         } catch (error) {

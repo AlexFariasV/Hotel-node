@@ -43,12 +43,12 @@ gravarUsuAutenticado = async (req, res, next) => {
                 };
             } else {
                 // erro senha incorreta
-                return res.render("pages/login", { listaErros: errorLogin, dados: req.body })
+                return res.render("pages/template-home", {pagina:"login", logado:null, dados: req.body, listaErros: errorLogin })
             }
         } else {
             // var autenticado =  { autenticado: null, id: null, tipo: null };
             // erro email nao encontrado
-            return res.render("pages/login", { listaErros: errorLogin, dados: req.body })
+            return res.render("pages/template-home", {pagina:"login", logado:null, dados: req.body, listaErros: errorLogin })
         }
     } /* else {
         // var autenticado =  { autenticado: null, id: null, tipo: null };
