@@ -34,8 +34,12 @@ gravarUsuAutenticado = async (req, res, next) => {
 
         var results = await usuario.findByEmail(req.body.email); 
         var total = Object.keys(results).length;
+        console.log(results)
+        console.log(bcrypt.compareSync(req.body.senha, results[0].senha_usuario))
         if (total == 1) {
             if (bcrypt.compareSync(req.body.senha, results[0].senha_usuario)) {
+
+               
                 var autenticado = {
                     autenticado: results[0].nome_usuario,
                     id: results[0].id_usuario,

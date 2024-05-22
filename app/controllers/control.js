@@ -2,7 +2,7 @@ const tarefasModel = require("../models/models");
 const moment = require("moment");
 const { body, validationResult } = require("express-validator");
 const bycrypt = require("bcryptjs");
-const salt = bycrypt.genSaltSync(10)
+const salt = bycrypt.genSaltSync(12)
 
 const TarefasControl = {
 
@@ -22,7 +22,12 @@ const TarefasControl = {
 
         /* req.flash('success', 'Usuário logado') */
 
-        res.redirect("/cadastro"); //alterar 
+        if (req.session.autenticado.tipo == 1) {
+            res.redirect("/quartos");
+        } else if (req.session.autenticado.tipo == 3) {
+            res.redirect("/adm");
+        } 
+
     },
 
     regrasValidacaoFormLogin: [
