@@ -1,0 +1,2 @@
+// queria gravarUsuAutenticadoCadastro e verificarUsuAutorizado e também enviar cada tipo ser enviado para página certa, mas esta ocoreendo algum erro que não envia para a página certa 
+e gravar Usúario  
