@@ -7,6 +7,11 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+/* =====================validator============================== */
+.erroInput {
+    border: solid 1.5px red !important;
+
+}
 .erroForm {
     background-color: red;
     display: block;
@@ -19,6 +24,7 @@ body {
     width: 100%;
     height: fit-content;
 }
+/* =====================validator============================== */
 
 @media only screen and (max-width: 480px) {
     #container {

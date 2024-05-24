@@ -4,6 +4,7 @@
     <%
     var msgErro = {nome:"", email:"", senha:"", "c-senha":""}
     var cssErro = {nome:"", email:"", senha:"", "c-senha":""}
+    var cssErroBorda = {nome:"", email:"", senha:"","c-senha":""}
     let valorCampos = {nome:"", email:"", senha:"", "c-senha":""}
     if(dados && dados!=null){
         valorCampos = dados
@@ -14,15 +15,19 @@
             if(itemErro.path == "nome"){
                 msgErro.nome = itemErro.msg
                 cssErro.nome = "erroForm"
+                cssErroBorda.nome = "erroInput";
             } else if(itemErro.path == "email"){
                 msgErro.email = itemErro.msg
                 cssErro.email = "erroForm"
+                cssErroBorda.email = "erroInput";
             } else if(itemErro.path == "senha"){
                 msgErro.senha = itemErro.msg
                 cssErro.senha = "erroForm"
+                cssErroBorda.senha = "erroInput";
             } else if(itemErro.path == "c-senha"){
                 msgErro["c-senha"] = itemErro.msg
                 cssErro["c-senha"] = "erroForm"
+                cssErroBorda["c-senha"] = "erroInput";
             }
         });
     } 
@@ -43,17 +48,17 @@
             <form action="cadastro" method="post"  class = "login-form">
                 <h2>Cadastro</h2>
 
-                <input type="text" name="nome" id="nome" placeholder = "Seu nome" value="<%=valorCampos.nome%>">
+                <input type="text" name="nome" id="nome" placeholder = "Seu nome" value="<%=valorCampos.nome%>"  class="<%= cssErroBorda.nome %>">
                 <span class="<%= cssErro.nome %>"><%= msgErro.nome %></span><br>
 
 
-                <input type="text" name="email" id="email" placeholder = "Seu e-mail" value="<%=valorCampos.email%>">
+                <input type="text" name="email" id="email" placeholder = "Seu e-mail" value="<%=valorCampos.email%>"  class="<%= cssErroBorda.email %>">
                 <span class="<%= cssErro.email %>"><%= msgErro.email %></span><br>
 
-                <input type="password" name="senha" id="senha" placeholder = "Sua senha" value="<%=valorCampos.senha%>">
+                <input type="password" name="senha" id="senha" placeholder = "Sua senha" value="<%=valorCampos.senha%>"  class="<%= cssErroBorda.senha %>">
                 <span class="<%= cssErro.senha %>"><%= msgErro.senha %></span><br>
 
-                <input type="password" name="c-senha" id="c-senha" placeholder = "Confime a senha" value="<%=valorCampos['c-senha']%>">
+                <input type="password" name="c-senha" id="c-senha" placeholder = "Confime a senha" value="<%=valorCampos['c-senha']%>"  class="<%= cssErroBorda['c-senha'] %>">
                 <span class="<%= cssErro['c-senha'] %>"><%= msgErro['c-senha'] %></span><br>
 
                 <button type="submit">Cadastrar</button>
