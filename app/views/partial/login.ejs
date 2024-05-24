@@ -32,12 +32,10 @@ if (listaErros && listaErros.errors) {
             <a href="/"><span id="fechar">&times;</span></a>
             <form action="/login" method="post" class = "login-form">
                 <h2>Login</h2>
-                
                 <input type="text" name="email" id="email" class="<%= cssErroBorda.email %>" placeholder="Seu e-mail" value="<%=valorCampos.email%>">
                 <span class="<%= cssErro.email %>">
                     <%= msgErro.email %>
                 </span>
-
                 <input type="password" name="senha" id="senha" placeholder="Sua senha" class="input__field <%= cssErroBorda.senha %>"
                 placeholder="Senha" value="<%=valorCampos.senha%>">
                   <span class="<%= cssErro.senha %>">

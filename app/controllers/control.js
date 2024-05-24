@@ -8,22 +8,18 @@ const TarefasControl = {
 
     logar: (req, res) => {
         const erros = validationResult(req);
-
         if (!erros.isEmpty()) {
-
             return res.render("pages/template-home", { pagina: "login", logado: null, dados: req.body, listaErros: erros })
         }
-
         if (req.session.autenticado != null) {
 
             if (req.session.autenticado.tipo == 1) {
                 res.redirect("/quartos");
             } else if (req.session.autenticado.tipo == 3) {
                 res.redirect("/adm");
-            }else {
-                res.render("pages/login", { listaErros: erros, dados:null })
+            } else {
+                res.render("pages/login", { listaErros: erros, dados: null })
             }
-
             return;
         }
 
@@ -41,7 +37,6 @@ const TarefasControl = {
             .withMessage("Senha inválida, deve conter pelo menos 1 letra, 1 número e 1 caractere especial"),
 
     ],
-
 
     Criarussuario: async (req, res) => {
         const errors = validationResult(req);
@@ -62,7 +57,7 @@ const TarefasControl = {
         } catch (error) {
             return error;
         }
-        
+
     },
     regrasValidacao: [
         body("nome")
@@ -96,8 +91,6 @@ const TarefasControl = {
                 return true;
             })
     ],
-
-
 
 }
 

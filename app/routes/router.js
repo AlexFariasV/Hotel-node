@@ -9,7 +9,6 @@ const {gravarUsuAutenticado} = require('../models/autenticador_middleware')
 router.get("/", function (req, res) {
     res.render("pages/template-home", {pagina:"home", logado:null});
 });
-/* ====================================NovasRotas=================================================== */
 router.get("/quartos", function (req, res) {
     tipoQuartosController.listarTiposQuartos(req, res);
 });
@@ -18,7 +17,6 @@ router.get("/quartos-estatico", function (req, res) {
     res.render("pages/template-home", {pagina:"quartos-estatico", logado:null});
 });
 
-/* ======================================================================================= */
 router.get("/login", function (req, res) {
     res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null});
 });
@@ -28,8 +26,7 @@ router.post('/login', TarefasControl.regrasValidacaoFormLogin, gravarUsuAutentic
 
 router.get("/cadastro", function (req, res) {
     res.render("pages/template-home", {pagina:"cadastro", logado:null, retorno: null, listaErros: null, dados: null
-    
-    /* valores: { nome_usuario: ""  , email_usuario:"", senha_usuario:""   } */   });
+});
 });
 router.post("/cadastro", TarefasControl.regrasValidacao,  async function (req, res) {
     TarefasControl.Criarussuario(req,res)
