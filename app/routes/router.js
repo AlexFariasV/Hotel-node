@@ -39,7 +39,7 @@ router.get("/perfil", function (req, res) {
     res.render("pages/template-home", {pagina:"perfil", logado:"logado"});
 });
 
-router.get("/adm", function (req, res) {
+router.get("/adm", verificarUsuAutorizado([3], 'pages/restrito') ,function (req, res) {
     res.render("pages/adm/template-adm",{pagina:"index"});
 });
 router.get("/adm-cliente", function (req, res) {

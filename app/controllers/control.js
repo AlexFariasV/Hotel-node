@@ -10,59 +10,59 @@ const TarefasControl = {
         const erros = validationResult(req);
 
         if (!erros.isEmpty()) {
-            
-            return res.render("pages/template-home", {pagina:"login", logado:null, dados: req.body, listaErros: erros })
+
+            return res.render("pages/template-home", { pagina: "login", logado: null, dados: req.body, listaErros: erros })
         }
 
         if (req.session.autenticado != null) {
-            res.redirect("/");
-        } else {
-            res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null,})
+
+            if (req.session.autenticado.tipo == 1) {
+                res.redirect("/quartos");
+            } else if (req.session.autenticado.tipo == 3) {
+                res.redirect("/adm");
+            }else {
+                res.render("pages/login", { listaErros: erros, dados:null })
+            }
+
+            return;
         }
-
-        /* req.flash('success', 'Usuário logado') */
-
-        if (req.session.autenticado.tipo == 1) {
-            res.redirect("/quartos");
-        } else if (req.session.autenticado.tipo == 3) {
-            res.redirect("/adm");
-        } 
 
     },
 
     regrasValidacaoFormLogin: [
         body("email")
-        .isEmail()
-        .withMessage("Email invalido "),
+            .isEmail()
+            .withMessage("Email invalido "),
         body("senha")
-        .isLength({ min: 8, max: 30 })
-        .withMessage("Senha inválida, deve conter pelo menos 8 caracteres")
-        .bail()
-        .matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/)
-        .withMessage("Senha inválida, deve conter pelo menos 1 letra, 1 número e 1 caractere especial"),
-          
+            .isLength({ min: 8, max: 30 })
+            .withMessage("Senha inválida, deve conter pelo menos 8 caracteres")
+            .bail()
+            .matches(/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])/)
+            .withMessage("Senha inválida, deve conter pelo menos 1 letra, 1 número e 1 caractere especial"),
+
     ],
 
 
     Criarussuario: async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-          console.log(errors);
-          return res.render("pages/template-home", {
-            dados: req.body,
-            listaErros: errors,
-            pagina: "cadastro",
-            logado: null
+            console.log(errors);
+            return res.render("pages/template-home", {
+                dados: req.body,
+                listaErros: errors,
+                pagina: "cadastro",
+                logado: null
 
-          });
+            });
         }
         try {
-            const resultados = await tarefasModel.create({...req.body,senha: bycrypt.hashSync(req.body.senha)})
+            const resultados = await tarefasModel.create({ ...req.body, senha: bycrypt.hashSync(req.body.senha) })
             res.render("pages/template-home", { pagina: "home", logado: null, });
 
         } catch (error) {
             return error;
         }
+        
     },
     regrasValidacao: [
         body("nome")
@@ -78,8 +78,8 @@ const TarefasControl = {
                     throw new Error('Email já utilizado.');
                 }
                 return true;
-            
-            }), 
+
+            }),
 
         body("senha")
             .isLength({ min: 8, max: 30 })
@@ -97,8 +97,8 @@ const TarefasControl = {
             })
     ],
 
-   
-   
+
+
 }
 
 

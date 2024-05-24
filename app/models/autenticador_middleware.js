@@ -61,7 +61,9 @@ gravarUsuAutenticado = async (req, res, next) => {
     next();
 }
 
-gravarUsuAutenticadoCadastro = (req, res, next) => {
+// gravar o usuario - 
+
+/* gravarUsuAutenticadoCadastro = (req, res, next) => {
     const erros = validationResult(req)
     if (erros.isEmpty()) {
         var autenticado = {
@@ -72,7 +74,9 @@ gravarUsuAutenticadoCadastro = (req, res, next) => {
     }
     req.session.autenticado = autenticado
     next()
-}
+} */
+
+//verrificar usuario - 
 
 verificarUsuAutorizado = (tipoPermitido, destinoFalha) => {
     return (req, res, next) => {
@@ -89,5 +93,5 @@ module.exports = {
     limparSessao,
     gravarUsuAutenticado,
     verificarUsuAutorizado,
-    gravarUsuAutenticadoCadastro
+    /* gravarUsuAutenticadoCadastro */
 }
