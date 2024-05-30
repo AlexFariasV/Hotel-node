@@ -1,4 +1,4 @@
-# HOTEL NODE 
+# HOTEL NODE - project 
 
 Projeto de treinamento de hotel com sistemas de login e cadastro & página adm.
 
