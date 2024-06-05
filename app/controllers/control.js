@@ -46,13 +46,18 @@ const TarefasControl = {
                 dados: req.body,
                 listaErros: errors,
                 pagina: "cadastro",
-                logado: null
+                logado: null, 
+                dadosNotificacao: null,
 
             });
         }
         try {
             const resultados = await tarefasModel.create({ ...req.body, senha: bycrypt.hashSync(req.body.senha) })
-            res.render("pages/template-home", { pagina: "home", logado: null, });
+            res.render(
+                "pages/template-home",
+                 { pagina: "home", logado: null, dadosNotificacao: {
+                    titulo: "Cadastro realizado!", mensagem: "Novo usuário criado com sucesso!", tipo: "success"
+                  }});
 
         } catch (error) {
             return error;

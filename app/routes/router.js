@@ -25,7 +25,7 @@ router.post('/login', TarefasControl.regrasValidacaoFormLogin, gravarUsuAutentic
 })
 
 router.get("/cadastro", function (req, res) {
-    res.render("pages/template-home", {pagina:"cadastro", logado:null, retorno: null, listaErros: null, dados: null
+    res.render("pages/template-home", {pagina:"cadastro", logado:null, retorno: null, listaErros: null, dados: null, dadosNotificacao: null
 });
 });
 router.post("/cadastro", TarefasControl.regrasValidacao,  async function (req, res) {

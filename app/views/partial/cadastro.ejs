@@ -15,22 +15,36 @@
             if(itemErro.path == "nome"){
                 msgErro.nome = itemErro.msg
                 cssErro.nome = "erroForm"
-                cssErroBorda.nome = "erroInput";
+                cssErroBorda.nome = "erroInput"
+                %>
+                    <script>notify('Verifique o campo nome', '<%= msgErro.nome %>', 'error'  )</script>
+                <%
             } else if(itemErro.path == "email"){
                 msgErro.email = itemErro.msg
                 cssErro.email = "erroForm"
-                cssErroBorda.email = "erroInput";
+                cssErroBorda.email = "erroInput"
+               
             } else if(itemErro.path == "senha"){
                 msgErro.senha = itemErro.msg
                 cssErro.senha = "erroForm"
-                cssErroBorda.senha = "erroInput";
+                cssErroBorda.senha = "erroInput"
+                
             } else if(itemErro.path == "c-senha"){
                 msgErro["c-senha"] = itemErro.msg
                 cssErro["c-senha"] = "erroForm"
-                cssErroBorda["c-senha"] = "erroInput";
+                cssErroBorda["c-senha"] = "erroInput"
+                
             }
         });
     } 
+    if (dadosNotificacao) { %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){window.location="/sair"}, 3000)
+                }                        
+        </script>
+    <% } %>
 
 %>
 
