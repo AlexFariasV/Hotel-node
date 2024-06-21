@@ -15,16 +15,32 @@ if (listaErros && listaErros.errors) {
             msgErro.email = itemErro.msg;
             cssErro.email = "erroForm";
             cssErroBorda.email = "erroInput";
+            %>
+            <script>notify('Verifique o campo email', '<%= msgErro.email %>', 'error'  )</script>
+        <%
             
         } else if (itemErro.path == "senha") {
             msgErro.senha = itemErro.msg;
             cssErro.senha = "erroForm";
             cssErroBorda.senha = "erroInput";
+            %>
+            <script>notify('Verifique o campo senha', '<%= msgErro.senha %>', 'error'  )</script>
+        <%
            
         }
     });
 }
+
 %>
+<% if (dadosNotificacao) { %>
+    <script>
+            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+            if("<%= dadosNotificacao.tipo %>" == "success"){
+                setTimeout(function(){window.location="/sair"}, 3000)
+            }                        
+    </script>
+<% } %>
+
 
 <main>
     <div class="login-page">

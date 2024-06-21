@@ -1,4 +1,13 @@
 ﻿
+<% if (dadosNotificacao) { %>
+    <script>
+            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+            if("<%= dadosNotificacao.tipo %>" == "success"){
+                setTimeout(function(){window.location="/adm"}, 3000)
+            }                        
+    </script>
+<% } %>
+
 <div class="jumbotron">
     <figure>
         <img src="../imagem/logo-azul.png" />

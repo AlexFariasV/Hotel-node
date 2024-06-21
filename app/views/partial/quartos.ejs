@@ -12,6 +12,14 @@
 </style>
 <!-- include header -->
 <%- include("../partial/header-home") %>
+<% if (dadosNotificacao) { %>
+    <script>
+            notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+            if("<%= dadosNotificacao.tipo %>" == "success"){
+                setTimeout(function(){window.location="/quartos"}, 3000)
+            }                        
+    </script>
+<% } %>
     <main>
         <div class="call-to-action">
             <h2 class="cta-title">Descubra o conforto que você merece!</h2>

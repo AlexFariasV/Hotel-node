@@ -23,16 +23,25 @@
                 msgErro.email = itemErro.msg
                 cssErro.email = "erroForm"
                 cssErroBorda.email = "erroInput"
+                %>
+                    <script>notify('Verifique o campo email', '<%= msgErro.email %>', 'error'  )</script>
+                <%
                
             } else if(itemErro.path == "senha"){
                 msgErro.senha = itemErro.msg
                 cssErro.senha = "erroForm"
                 cssErroBorda.senha = "erroInput"
+                %>
+                    <script>notify('Verifique o campo senha', '<%= msgErro.senha %>', 'error'  )</script>
+                <%
                 
             } else if(itemErro.path == "c-senha"){
                 msgErro["c-senha"] = itemErro.msg
                 cssErro["c-senha"] = "erroForm"
                 cssErroBorda["c-senha"] = "erroInput"
+                %>
+                    <script>notify('Verifique se as senhas estão iguais', '<%= msgErro["c-senha"] %>', 'error'  )</script>
+                <%
                 
             }
         });

@@ -18,7 +18,7 @@ router.get("/quartos-estatico", function (req, res) {
 });
 
 router.get("/login", function (req, res) {
-    res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null});
+    res.render("pages/template-home", {pagina:"login", logado:null, dados: null, listaErros: null, dadosNotificacao: null});
 });
 router.post('/login', TarefasControl.regrasValidacaoFormLogin, gravarUsuAutenticado , function (req, res) {
     TarefasControl.logar(req, res);
@@ -37,7 +37,7 @@ router.get("/perfil", function (req, res) {
 });
 
 router.get("/adm", verificarUsuAutorizado([3], 'pages/restrito') ,function (req, res) {
-    res.render("pages/adm/template-adm",{pagina:"index"});
+    res.render("pages/adm/template-adm",{pagina:"index", dadosNotificacao: null});
 });
 router.get("/adm-cliente",verificarUsuAutorizado([3], 'pages/restrito') , function (req, res) {
     res.render("pages/adm/template-adm",{pagina:"cliente/index"});

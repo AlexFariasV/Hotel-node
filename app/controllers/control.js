@@ -9,18 +9,20 @@ const TarefasControl = {
     logar: (req, res) => {
         const erros = validationResult(req);
         if (!erros.isEmpty()) {
-            return res.render("pages/template-home", { pagina: "login", logado: null, dados: req.body, listaErros: erros })
+            return res.render("pages/template-home", { pagina: "login", dados: req.body, listaErros: erros })
         }
         if (req.session.autenticado != null) {
 
             if (req.session.autenticado.tipo == 1) {
-                res.redirect("/quartos");
+                res.render("pages/template-home", { listaErros: null,logado: null, dados: null, pagina: "quartos", listaTipoQuartos:null , paginador: null, dadosNotificacao:{titulo: "success", mensagem: "Bem-vindo ", tipo:"success"}}); 
             } else if (req.session.autenticado.tipo == 3) {
-                res.redirect("/adm");
+                res.render("pages/adm/template-adm", { listaErros: null,logado: null, pagina:"index", dados: null, dadosNotificacao:{titulo: "success", mensagem: "bem-vindo adm ", tipo:"success"}});
             } else {
-                res.render("pages/login", { listaErros: erros, dados: null })
+                res.render("pages/login", { listaErros: null,logado: null, dados: null,dadosNotificacao:{titulo: "error", mensagem: "Usuário não permitido", tipo:"erros"} })
             }
-            return;
+            
+        }else {
+            res.render("pages/login", { listaErros: null, dados: null,dadosNotificacao:{titulo: "error", mensagem: "Usuário senha invalido ", tipo:"erros"} })
         }
 
     },
