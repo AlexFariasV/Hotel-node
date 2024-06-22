@@ -9,12 +9,14 @@ const TarefasControl = {
     logar: (req, res) => {
         const erros = validationResult(req);
         if (!erros.isEmpty()) {
-            return res.render("pages/template-home", { pagina: "login", dados: req.body, listaErros: erros })
+            return res.render("pages/template-home", { pagina: "login", dados: req.body, listaErros: erros, logado: null, dadosNotificacao: null })
         }
         if (req.session.autenticado != null) {
-
+                console.log(req.session.autenticado.tipo)
             if (req.session.autenticado.tipo == 1) {
-                res.render("pages/template-home", { listaErros: null,logado: null, dados: null, pagina: "quartos", listaTipoQuartos:null , paginador: null, dadosNotificacao:{titulo: "success", mensagem: "Bem-vindo ", tipo:"success"}}); 
+                res.render("pages/template-home", { pagina: "home", listaErros: null,logado: null, dados: null, dadosNotificacao:{titulo: "success", mensagem: "bem-vindo de volta ", tipo:"success"}})
+
+
             } else if (req.session.autenticado.tipo == 3) {
                 res.render("pages/adm/template-adm", { listaErros: null,logado: null, pagina:"index", dados: null, dadosNotificacao:{titulo: "success", mensagem: "bem-vindo adm ", tipo:"success"}});
             } else {
@@ -22,7 +24,7 @@ const TarefasControl = {
             }
             
         }else {
-            res.render("pages/login", { listaErros: null, dados: null,dadosNotificacao:{titulo: "error", mensagem: "Usuário senha invalido ", tipo:"erros"} })
+            res.render("pages/login", { listaErros: null, dados: null,logado:null, dadosNotificacao:{titulo: "error", mensagem: "Usuário senha invalido ", tipo:"erros"} })
         }
 
     },

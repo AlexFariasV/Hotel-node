@@ -18,10 +18,10 @@ const tipoQuartosController = {
         ? null
         : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas };
       /*  res.render("pages/index", { tarefas: results, paginador: paginador }); */
-      res.render("pages/template-home", { listaTipoQuartos: results, pagina: "quartos", logado: null, paginador: paginador, dadosNotificacao: null });
+      res.render("pages/template-home", { listaTipoQuartos: results, pagina: "quartos", logado: null, paginador: paginador, dadosNotificacao: null});
 
     } catch (e) {
-      console.log(e); // exibir os erros no console do vs code
+      console.log(e);
       res.json({ erro: "Falha ao acessar dados" });
     }
 
