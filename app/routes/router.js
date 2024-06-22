@@ -7,7 +7,7 @@ const {gravarUsuAutenticado} = require('../models/autenticador_middleware')
 
 
 router.get("/", function (req, res) {
-    res.render("pages/template-home", {pagina:"home", logado:null});
+    res.render("pages/template-home", {pagina:"home", logado:null, dadosNotificacao: null});
 });
 router.get("/quartos", function (req, res) {
     tipoQuartosController.listarTiposQuartos(req, res);
